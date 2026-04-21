@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dobos Tibor</title>
+<style>
+@keyframes fromTop {
+  from { opacity:0; transform: translateY(-60px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+@keyframes fromBottom {
+  from { opacity:0; transform: translateY(60px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+  height:100%;
+  overflow-x:hidden;
+}
+body {
+  font-family: Arial, sans-serif;
+  background:black;
+  color:white;
+  scroll-behavior:smooth;
+}
+
+.shadows-into-light-regular, h1 {
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 500;
+}
+
+header {
+  background: transparent;
+  padding:16px;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  transition: transform 0.4s ease;
+}
+
+.header-container {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo {
+  font-size:24px;
+  font-weight:bold;
+}
+
+nav ul {
+  list-style:none;
+  display:flex;
+  gap:16px;
+}
+
+nav a {
+  color:#ffffff;
+  font-weight:bold;
+  text-decoration:none;
+  position:relative;
+  padding-bottom:4px;
+}
+
+nav a:hover,
+nav a:focus {
+  color:rgb(118, 69, 255);
+}
+
+nav a::after {
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:2px;
+  background:rgb(118, 69, 255);
+  transition:width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a:focus::after {
+  width:100%;
+}
+
+.hero {
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+
+.hero video {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+}
+
+.hero::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.85) 0%,
+    rgba(0,0,0,0.4) 15%,
+    rgba(0,0,0,0) 40%,
+    rgba(0,0,0,0) 60%,
+    rgba(0,0,0,0.5) 85%,
+    rgba(0,0,0,0.98) 100%
+  );
+  z-index:-1;
+  pointer-events:none;
+}
+
+.hero-content {
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  text-align:center;
+}
+
+.hero-content h1 span {
+  display:inline;
+}
+
+.t1 {
+  animation: fromTop 1s ease-out forwards;
+  animation-delay: 0.1s;
+}
+
+.t2 {
+  animation: fromBottom 1s ease-out forwards;
+  animation-delay: 0.2s;
+  margin-left:10px;
+}
+
+.button-container {
+  display:flex;
+  gap:20px;
+}
+
+.button1, .button2 {
+  border:1px solid rgb(118, 69, 255);
+  padding:12px 28px;
+  border-radius:30px;
+  color:white;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.button1 {
+  animation: fromBottom 1s ease-out forwards;
+}
+
+.button2 {
+  background-color: rgba(118, 69, 255, 0.5);
+  animation: fromTop 1s ease-out forwards;
+}
+
+.button1:hover {
+  background:rgb(118, 69, 255);
+  color:black;
+  box-shadow:0 0 15px rgb(118, 69, 255);
+}
+
+.button2:hover {
+  background:black;
+  color:white;
+  box-shadow:0 0 15px rgb(0, 0, 0);
+}
+
+section {
+  padding:100px 20px;
+  scroll-margin-top:80px;
+}
+
+.fade-in {
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
+}
+
+.fade-in.show {
+  opacity:1;
+  transform:translateY(0);
+}
+
+.about {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.about-image {
+  position:relative;
+  flex:1;
+  min-width:300px;
+  max-width:500px;
+}
+
+.about-image img {
+  width:100%;
+  display:block;
+  border-radius:20px;
+}
+
+.about-image::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.85) 0%,
+      rgba(0,0,0,0) 25%,
+      rgba(0,0,0,0) 75%,
+      rgba(0,0,0,0.85) 100%
+    ),
+    linear-gradient(
+      to right,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.2) 40%,
+      rgba(0,0,0,0.6) 70%,
+      rgba(0,0,0,0.9) 100%
+    ),
+    radial-gradient(
+      ellipse at center,
+      rgba(0,0,0,0) 40%,
+      rgba(0,0,0,0.6) 100%
+    );
+  pointer-events:none;
+}
+
+.about-text {
+  flex:1;
+  min-width:300px;
+  text-align:left;
+}
+
+.about-text h2 {
+  margin-bottom:20px;
+  color: rgb(118, 69, 255);
+}
+
+.about-text p {
+  line-height:1.6;
+  color:#ddd;
+}
+
+.contact-icons {
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  margin-top:20px;
+}
+
+.contact-icons a {
+  font-size:24px;
+  color:white;
+  transition:0.3s;
+}
+
+.contact-icons a:hover {
+  transform:scale(1.2);
+  opacity:0.7;
+}
+.hero-content h1 {
+  font-size:64px;
+  font-weight:300;
+  letter-spacing:2px;
+  white-space:nowrap;
+  animation: zoomIn 1.5s ease-out forwards;
+  text-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <div class="logo">Dobos Tibor</div>
+    <nav>
+      <ul>
+        <li><a href="#about">Rólam</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <video autoplay muted loop>
+    <source src="videok/loop.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-content">
+    <h1>
+      <span class="t1">Üdvözöllek</span>
+      <span class="t2">a weboldalamon!</span>
+    </h1>
+
+    <div class="button-container">
+      <a href="#about" class="button1">Rólam</a>
+      <a href="#contact" class="button2">Lépjünk kapcsolatba</a>
+    </div>
+  </div>
+</div>
+
+<section id="about" class="about fade-in">
+  <div class="about-image">
+    <img src="kepek/en.jpg" alt="About image">
+  </div>
+  <div class="about-text">
+    <h2>Rólam</h2>
+    <p>Dobos Tibor vagyok, 17 éves. Jelenleg napjaim nagy részét azzal tölttöm hogy koptatom a padot.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact fade-in">
+  <h2 style="text-align:center;">Kontakt</h2>
+  <div class="contact-icons" style="flex-direction:column; align-items:center; gap:20px;">
+    <a href="#"><img src="kepek/Instagram-Logo-White-png.png alt="Instagram" style="width:40px;"></a>
+    <a href="#"><img src="kepek/facebook.png" alt="Facebook" style="width:40px;"></a>
+    <a href="#"><img src="kepek/409-4090200_thumb-image-gmail-icon-white-png-transparent-png.png" alt="Email" style="width:40px;"></a>
+    <a href="#"><img src="kepek/phone.png" alt="Phone" style="width:40px;"></a>
+  </div>
+</section>
+
+<script>
+const elements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('show');
+  });
+},{threshold:0.2});
+
+elements.forEach(el => observer.observe(el));
+
+let lastScrollY = window.scrollY;
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  header.style.transform = window.scrollY > lastScrollY ? 'translateY(-100%)' : 'translateY(0)';
+  lastScrollY = window.scrollY;
+});
+</script>
+
+</body>
+</html>
