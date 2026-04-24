@@ -117,10 +117,13 @@ body {
 .dot {
   width:35px;
   height:35px;
-  background:red;
-  border-radius:50%;
-  box-shadow:0 0 6px red;
-  animation:blink 1s infinite;
+  background: red;       /* Pötty színe */
+  border-radius: 50%;    /* Hogy kör legyen */
+  display: inline-block; /* Fontos, hogy a szöveg mellett maradjon */
+  margin-left: 8px;      /* Távolság a felkiáltójeltől */
+  box-shadow: 0 0 8px red; /* A világító hatás */
+  animation: blink 1s infinite; /* A villogás (ha van ilyen animációd) */
+  vertical-align: middle; /* Hogy egy vonalba kerüljön a betűkkel */
 }
 
 /* villogás */
@@ -785,13 +788,10 @@ footer {
   </video>
 
   <div class="hero-content">
-    <h1 class="hero-title">
+    
+<h1 class="hero-title">
   <span class="t1">Welcome to</span>
-  <span class="t2">my website!</span>
-
-  <span class="rec">
-    <span class="dot"></span>
-  </span>
+  <span class="t2">my website!&nbsp;<span class="dot"></span></span>
 </h1>
 
     <div class="button-container">
