@@ -107,6 +107,28 @@ body {
   color:white;
   scroll-behavior:smooth;
 }
+.rec {
+  display:inline-flex;
+  align-items:center;
+  margin-left:5px;
+}
+
+/* pici "REC pont" */
+.dot {
+  width:35px;
+  height:35px;
+  background:red;
+  border-radius:50%;
+  box-shadow:0 0 6px red;
+  animation:blink 1s infinite;
+}
+
+/* villogás */
+@keyframes blink {
+  0% { opacity:1; }
+  50% { opacity:0.2; }
+  100% { opacity:1; }
+}
 
 img {
   max-width:100%;
@@ -286,6 +308,90 @@ section {
   transform:translateY(0);
 }
 
+.services {
+  background: linear-gradient(
+    135deg,
+    rgb(118,69,255) 0%,
+    rgb(40,20,90) 100%
+  );
+  padding:120px 20px;
+  text-align:center;
+}
+
+.services h2 {
+  color:white;
+  margin-bottom:40px;
+  font-size:32px;
+}
+
+/* container */
+.services-container {
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  max-width:1400px;
+  margin:0 auto;
+  padding-top:20px;
+  overflow-x:auto; /* mobil scroll */
+  overflow-y:visible; /* EZ A KULCS */
+  padding-bottom:10px;
+}
+
+/* card */
+.service-card {
+  min-width:220px;
+  max-width:220px;
+
+  background:rgba(0,0,0,0.4);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:20px;
+  padding:25px;
+
+  backdrop-filter: blur(10px);
+  transition:0.4s;
+}
+
+/* PNG ikon */
+.service-card img {
+  width:60px;
+  height:60px;
+  object-fit:contain;
+  margin-bottom:15px;
+  transition:0.3s;
+}
+
+/* text */
+.service-card h3 {
+  color:white;
+  margin-bottom:10px;
+}
+
+.service-card p {
+  color:#ddd;
+  font-size:14px;
+}
+
+/* hover */
+.service-card:hover {
+  transform:translateY(-10px) scale(1.05);
+  background:rgba(0,0,0,0.7);
+  box-shadow:0 0 25px rgba(0,0,0,0.4);
+}
+
+.service-card:hover img {
+  transform:scale(1.2);
+}
+
+/* scrollbar (opcionális) */
+.services-container::-webkit-scrollbar {
+  height:6px;
+}
+
+.services-container::-webkit-scrollbar-thumb {
+  background:white;
+  border-radius:10px;
+}
+
 /* ================= ABOUT ================= */
 
 .about {
@@ -404,6 +510,7 @@ section {
   background:rgb(118,69,255);
   color:black;
 }
+
 
 /* ================= MODAL ================= */
 
@@ -592,8 +699,30 @@ footer {
     min-width:160px;
   }
   
+  /* Kattintás alapú megjelenítéshez az új osztály */
   nav ul.active {
     display: flex;
+  }
+
+  .rec {
+    margin-left:8px;
+  }
+
+  .dot {
+    width:15px;
+    height:15px;
+  }
+
+
+
+  .services-container {
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    gap:15px;
+
+    justify-content:flex-start;
+    padding:10px 20px 20px;
   }
 
   .about {
@@ -608,6 +737,10 @@ footer {
   .modal-flex img {
     width:100%;
   }
+  .services-container {
+  overflow-x:auto;
+  padding-bottom:10px;
+}
 }
 </style>
 </head>
@@ -637,6 +770,7 @@ footer {
     <nav>
       <ul>
         <li><a href="#works">Works</a></li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -651,10 +785,14 @@ footer {
   </video>
 
   <div class="hero-content">
-    <h1>
-      <span class="t1">Welcome to</span>
-      <span class="t2">my website!</span>
-    </h1>
+    <h1 class="hero-title">
+  <span class="t1">Welcome to</span>
+  <span class="t2">my website!</span>
+
+  <span class="rec">
+    <span class="dot"></span>
+  </span>
+</h1>
 
     <div class="button-container">
       <a href="#about" class="button1">About Me</a>
@@ -767,6 +905,44 @@ footer {
         <p>I decided to test out my newly purchased drone.</p>
         <span class="card-btn">View More</span>
       </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="services" class="services fade-in">
+  <h2>Szolgáltatások</h2>
+
+  <div class="services-container">
+
+    <div class="service-card">
+      <img src="kepek/camera-drone.png" alt="">
+      <h3>Drone Videography</h3>
+      <p>Spectacular aerial shots that take your video to a whole new level.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="kepek/film.png" alt="">
+      <h3>Cinematic Videography</h3>
+      <p>More than just recording; it's mood and story – videos that truly stick with you.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="kepek/scissors.png" alt="">
+      <h3>Video Editing</h3>
+      <p>Fast-paced, modern cuts with great music and punchy visuals.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="kepek/mobile.png" alt="">
+      <h3>Social Media Content</h3>
+      <p>Short, attention-grabbing videos that perform well on Instagram and TikTok.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="kepek/confetti.png" alt="">
+      <h3>Event Videography</h3>
+      <p>Capturing the best moments so they bring back that exact feeling later on.</p>
     </div>
 
   </div>
